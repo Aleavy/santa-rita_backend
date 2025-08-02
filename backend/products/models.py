@@ -2,16 +2,23 @@ from django.db import models
 
 
 # Create your models here.
-       
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name    
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField()
     price = models.IntegerField()
     image = models.ImageField(default="")
-
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default='')
 
 
     def remove_on_image_update(self):
+
         try:
             # is the object in the database yet?
             obj = Product.objects.get(id=self.id)
@@ -35,3 +42,5 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+
