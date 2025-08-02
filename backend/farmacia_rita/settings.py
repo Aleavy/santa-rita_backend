@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     "rest_framework",
     "products",
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,20 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Products API',
+    'DESCRIPTION': 'This is an api for retrieving products from a drugstore',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
+
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
 
 # Static files (CSS, JavaScript, Images)
