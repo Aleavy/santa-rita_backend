@@ -11,10 +11,10 @@ router.register(r"categories", CategoryViewSet)
 
 urlpatterns = [
     path('products/<str:category>/', ProductsByCategory.as_view()),
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
-    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path("", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]
