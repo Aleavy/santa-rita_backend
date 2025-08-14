@@ -1,6 +1,8 @@
 from rest_framework import viewsets, generics
 from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from .serializers import ProductSerializer, CategorySerializer, UserSerialzer
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
 # Create your views here.
@@ -9,8 +11,7 @@ class ProductsByCategory(generics.ListAPIView):
 
     def get_queryset(self):
         category = self.kwargs['category']
-        return Product.objects.filter(category__name=category)
-
+        return Product.objects.filter(category__name=category) 
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()

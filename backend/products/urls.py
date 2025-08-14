@@ -2,7 +2,7 @@ from rest_framework.routers import DefaultRouter
 from .views import ProductViewSet, CategoryViewSet, ProductsByCategory
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
-
+from rest_framework.authtoken import views
 
 
 router = DefaultRouter()
@@ -17,4 +17,5 @@ urlpatterns = [
     path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path("", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path('api-token-auth/', views.obtain_auth_token)
 ]

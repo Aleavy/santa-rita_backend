@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'corsheaders',
     "rest_framework",
+    'rest_framework.authtoken',
     "products",
     'drf_spectacular',
 ]
@@ -127,6 +128,7 @@ SPECTACULAR_SETTINGS = {
 REST_FRAMEWORK = {
     # YOUR SETTINGS
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
 }
 
 
