@@ -10,7 +10,7 @@ router.register(r"products", ProductViewSet)
 router.register(r"categories", CategoryViewSet)
 
 urlpatterns = [
-    path('products/<str:category>/', ProductsByCategory.as_view()),
+    path('products/category/<str:category>/', ProductsByCategory.as_view()),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
     path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),

@@ -133,11 +133,13 @@ REST_FRAMEWORK = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+import os
+
 STATIC_URL = "static/"
 #media url es por donde podemos acceder a la imagen via http
 MEDIA_URL = '/media/'
 #media root es donde se guarda la imagen fisicamente, luego media url busca la imagen en este directorio
-MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #cors auth
 CORS_ALLOWED_ORIGINS = [

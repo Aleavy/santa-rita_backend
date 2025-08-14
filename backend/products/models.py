@@ -13,7 +13,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField()
     price = models.IntegerField()
-    image = models.ImageField(default="")
+    image = models.ImageField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default='')
 
 
@@ -34,6 +34,8 @@ class Product(models.Model):
         # object is being removed from db, remove the file from storage first
         self.image.delete()
         return super(Product, self).delete(*args, **kwargs)
+
+
 
     def save(self, *args, **kwargs):
         # object is possibly being updated, if so, clean up.
