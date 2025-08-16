@@ -11,6 +11,7 @@ class ProductsByCategory(generics.ListAPIView):
 
     def get_queryset(self):
         category = self.kwargs['category']
+        print(category)
         return Product.objects.filter(category__name=category) 
 
 class ProductViewSet(viewsets.ModelViewSet):
