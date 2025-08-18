@@ -125,10 +125,27 @@ SPECTACULAR_SETTINGS = {
     # OTHER SETTINGS
 }
 
+
+
 REST_FRAMEWORK = {
     # YOUR SETTINGS
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
+    'DEFAULT_THROTTLE_CLASSES': [
+    'rest_framework.throttling.AnonRateThrottle',
+    'rest_framework.throttling.UserRateThrottle',
+    'products.throttling.ProductsRateThrottle',
+    'products.throttling.CategoryRateThrottle',
+    'products.throttling.SearchRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '20/min',
+        'user': '40/min',
+        'product': '100/min',
+        'category': '40/min',
+        'search' : '150/min',
+        
+    }
 }
 
 

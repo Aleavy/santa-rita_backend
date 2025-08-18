@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from .views import ProductViewSet, CategoryViewSet, ProductsByCategory
+from .views import ProductViewSet, CategoryViewSet, ProductsByCategory, ProductsByName
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from rest_framework.authtoken import views
@@ -11,6 +11,7 @@ router.register(r"categories", CategoryViewSet)
 
 urlpatterns = [
     path('products/category/<str:category>/', ProductsByCategory.as_view()),
+    path('products/search/<str:name>/', ProductsByName.as_view()),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Optional UI:
     path('swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
