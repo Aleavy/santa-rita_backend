@@ -24,7 +24,7 @@ class ProductsByName(generics.ListAPIView):
     def get_queryset(self):
         name = self.kwargs['name']
  
-        return Product.objects.filter(name__icontains=name) 
+        return Product.objects.filter(name__icontains=name)[:10]
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
